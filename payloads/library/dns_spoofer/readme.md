@@ -9,7 +9,7 @@ Description
 ===========
 
 Redirects HTTP traffic to Apache2 server running on Bunny. It works on
-assumption that BashBunny adapter takes precedence  over host adapter. I have
+assumption that BashBunny adapter takes precedence over host adapter. I have
 noticed sometimes it won’t.
 
 Configuration
@@ -21,23 +21,17 @@ Configuration
 
 2.  Make sure that your repositories are up to date:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-apt-get update
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    `apt-get update`
 
-1.  Install apache:
+3.  Install apache:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-apt-get install apache2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    `apt-get install apache2`
 
-1.  Install dnsspoof:
+4.  Install dnsspoof:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-apt-get install dsniff
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    `apt-get install dsniff`
 
-1.  Edit hosts file, by default it redirects all the HTTP traffic to local
+5.  Edit hosts file, by default it redirects all the HTTP traffic to local
     Apache
 
 STATUS
